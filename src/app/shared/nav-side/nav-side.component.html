@@ -1,0 +1,24 @@
+<mat-sidenav-container class="sidenav-container">
+
+  <mat-sidenav mode="side" [opened]="isOpen">  <!-- opened es un parametro de mat-sidenav -->
+
+    <mat-nav-list>
+      <img mat-card-image
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/UNMSM_escudo_XVI-XXI_transparente_siglas_nombre_vertical.svg/1200px-UNMSM_escudo_XVI-XXI_transparente_siglas_nombre_vertical.svg.png"
+        alt="..." width="200px" height="300px">
+      <a mat-list-item [routerLink]="['home']">Mi Perfil</a>
+      <a mat-list-item [routerLink]="['page-two']">Reserva Cita Médica</a>
+      <a mat-list-item [routerLink]="['page-three']">Especialidades</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <!-- Dependiendo del valor del evento toggleSideNav se activa el método toggleSideNav() que abre o cierra el SideNav -->
+    <app-nav-toolbar  (toggleSideNav)="toggleSideNav()"
+                      (logout)="logout()">
+
+    </app-nav-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
