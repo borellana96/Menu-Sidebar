@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/auth/auth.service';
+import { User } from 'src/app/core/model/user.model';
 
 @Component({
   selector: 'app-login',
@@ -30,12 +31,11 @@ export class LoginComponent implements OnInit {
   }
 
   public login(email: string, password: string) {
-    let user = this.authService.login(email, password);
-    if (user) {
-      this.router.navigate(['navside'], { replaceUrl: true });
-      return true;
-    }
-    return false;
+    let user: User = {
+      username: email,
+      password: password
+    };
+    this.authService.login(user);
   }
 
 }

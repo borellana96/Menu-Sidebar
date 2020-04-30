@@ -12,7 +12,6 @@ export class AuthGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private storage: StorageService
   ) { }
 
   canActivate(
@@ -21,6 +20,7 @@ export class AuthGuard implements CanActivate {
     if (this.authService.isLoggedIn()) {
       return true;
     }
+    console.log("No hay token");
     this.router.navigate(['']);
     return false;
   }

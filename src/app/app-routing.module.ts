@@ -8,7 +8,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 const routes: Routes = [
   {
     path: 'login',
-    data: { title: 'MenuSidebar - Login'},
+    data: { title: 'MenuSidebar - Login' },
     loadChildren: () =>
       import('./pages/login/login.module').then(
         m => m.LoginModule

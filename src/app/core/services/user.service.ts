@@ -7,7 +7,7 @@ import { User } from '../model/user.model';
 })
 export class UserService {
 
-  path = 'http://localhost:8080/clinica/usuarios';
+  path = 'http://localhost:8080/api/clinica/usuarios';
 
   constructor(private http: HttpClient) { }
 
@@ -18,5 +18,5 @@ export class UserService {
   register(user: User) {
     return this.http.post<User>(this.path, user);
   }
-  
+
 }
