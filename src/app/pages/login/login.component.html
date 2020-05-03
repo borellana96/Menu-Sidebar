@@ -1,25 +1,29 @@
 <div class="full-page">
     <mat-card class="login-card">
-        <img mat-card-image src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR21nt4Bh7cCrocO2uS5bU27xVHSC1ozEH8E610EU6V34P2gsxg">
-        
+        <img mat-card-image
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR21nt4Bh7cCrocO2uS5bU27xVHSC1ozEH8E610EU6V34P2gsxg">
+
         <mat-card-title style="text-align: center;">
             Clínica UNMSM
         </mat-card-title>
+
         <mat-card-content>
-            <mat-form-field class="login-field">
-                <input matInput placeholder="Email" name="email" [(ngModel)]="email" type="email" />
-                <mat-error >DNI deben ser 8 digitos</mat-error>
-            </mat-form-field>
-            <mat-form-field class="login-field">
-                <input matInput placeholder="Password" name="password" [(ngModel)]="password" type="password">
-                <mat-error >El password deben contener más de 4 caracteres</mat-error>
-            </mat-form-field>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <mat-form-field class="login-field">
+                    <input matInput placeholder="Username" type="text" formControlName="username" />
+                    <mat-error>Email No Valido</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="login-field">
+                    <input matInput placeholder="Password" type="password" formControlName="password">
+                    <mat-error>El password deben contener más de 4 caracteres</mat-error>
+                </mat-form-field>
+
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" class="login-field" type="submit"
+                        [disabled]="loginForm.invalid">Ingresar</button>
+                </mat-card-actions>
+            </form>
         </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button color="primary" class="login-field" (click)="login(email, password)"
-                type="submit">
-                Ingresar
-            </button>
-        </mat-card-actions>
     </mat-card>
 </div>

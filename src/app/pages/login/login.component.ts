@@ -12,6 +12,7 @@ import { User } from 'src/app/core/model/user.model';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
 
   constructor(
     private router: Router,
@@ -20,22 +21,22 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    //this.formValidator();
+    this.formValidator();
   }
 
   formValidator(): void {
     this.loginForm = this.fb.group({
-      dni: ['', [Validators.minLength(8), Validators.maxLength(8)]],
+      username: ['', [Validators.pattern(this.emailPattern)]],
       password: ['', [Validators.minLength(4)]]
     });
   }
 
-  public login(email: string, password: string) {
-    let user: User = {
-      username: email,
-      password: password
-    };
-    this.authService.login(user);
+  public login() {
+    if (this.loginForm.valid) {
+      this.authService.login(this.loginForm.value);
+    } else {
+      console.log("Form Not Valid");
+    }
   }
 
 }

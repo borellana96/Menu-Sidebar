@@ -5,13 +5,14 @@ import { Router } from '@angular/router';
 import { StorageKey } from '../storage/storage.model';
 import { User } from '../model/user.model';
 import { JwtResponse } from '../model/jwtResponse.model';
+import { environment } from 'src/environments/environment';
 const { AUTH_TOKEN } = StorageKey
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  basePath = 'http://localhost:8080/api/clinica/auth';   //Aprender manual de las URIS, Login, register
+  basePath = `${environment.baseUrl}/auth`;   //Aprender manual de las URIS, Login, register
   //token: string;
 
   constructor(
